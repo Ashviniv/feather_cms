@@ -12,5 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require 'feather_cms/epiceditor'
-//= require 'feather_cms/editor'
+//= require ckeditor/init
+
+$(document).ready(function(){
+    (function() {
+        if (typeof window['CKEDITOR_BASEPATH'] === "undefined" || window['CKEDITOR_BASEPATH'] === null) {
+            window['CKEDITOR_BASEPATH'] = "/assets/feather_cms/ckeditor/";
+        }
+    }).call(this);
+
+    function ck_load() {
+        $('.feather-editor').each(function(){
+            CKEDITOR.replace( $(this).attr('name'), { customConfig : '/assets/feather_cms/ckeditor_config.js'});
+        });
+    }
+
+    ck_load();
+})
+

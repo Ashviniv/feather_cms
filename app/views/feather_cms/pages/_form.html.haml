@@ -1,5 +1,5 @@
 .well.row
-  .span12
+  .span11
     = form_for(@page, :html => {:id => 'page_form'}) do |f|
       .control-group
         %label.control-label{:for => 'status'} Name*
@@ -9,13 +9,15 @@
         - unless @page.new_record?
           %label.control-label{:for => 'status'} Status
           .controls
-            = f.select :status, FeatherCms::Page::STATUS 
+            = f.select :status, FeatherCms::Page::STATUS
         %label.control-label{:for => 'layout'} Layout
         .controls
-          = f.select :layout, FeatherCms::Config.layouts 
+          = f.select :layout, FeatherCms::Config.layouts
       .control-group
         %label.control-label{:for => 'textarea'} Content*
         .controls
-          = f.hidden_field :content, :id => 'page_content'
-          #epiceditor
+          = f.text_area :content, class: 'feather-editor'
+          -#
+            = f.hidden_field :content, :id => 'page_content'
+            #epiceditor
         = f.submit 'Save', :class => 'btn btn-primary btn-large'

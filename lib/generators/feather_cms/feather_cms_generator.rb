@@ -5,13 +5,14 @@ class FeatherCmsGenerator < Rails::Generators::Base
     template 'initializer.rb', 'config/initializers/feather_cms.rb'
 
     migration_file = Dir.glob("db/migrate/[0-9]*_*.rb").grep(/\d+_create_feather_pages.rb$/).first
-    migration_number = if migration_file 
-                         migration_file.gsub(/_create_feather_pages.rb|db|migrate|\//, '') 
-                       else 
+    migration_number = if migration_file
+                         migration_file.gsub(/_create_feather_pages.rb|db|migrate|\//, '')
+                       else
                          Time.now.utc.to_s.gsub(/[- :UTC]/, '')
                        end
 
     template 'migration.rb', "db/migrate/#{migration_number}_create_feather_pages.rb"
+    template 'create_ckeditor_assets.rb', "db/migrate/#{migration_number.to_i + 1 }_create_ckeditor_assets.rb"
   end
 
   def add_routes

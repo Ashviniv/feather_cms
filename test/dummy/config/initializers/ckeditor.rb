@@ -1,9 +1,3 @@
-require "feather_cms/engine"
-require "feather_cms/version"
-require "feather_cms/config"
-require 'ckeditor'
-require 'carrierwave'
-require 'mini_magick'
 # Use this hook to configure ckeditor
 Ckeditor.setup do |config|
   # ==> ORM configuration
@@ -22,7 +16,4 @@ Ckeditor.setup do |config|
 
   # Setup authorization to be run as a before filter
   # config.authorize_with :cancan
-end
-
-module FeatherCms
 end
