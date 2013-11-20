@@ -9,7 +9,6 @@ gemspec
 gem 'jquery-rails'
 gem 'haml', '>= 3.0.0'
 gem 'sass-rails'
-gem 'bootstrap-sass'
 group :development do
   gem 'haml-rails', '>= 0.3.4'
 end

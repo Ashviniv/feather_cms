@@ -1,0 +1,12 @@
+= form_for(@category, :html => {:id => 'section_form', class: 'form-horizontal'}) do |f|
+  .modal-header
+    = link_to 'X', '', data: {dismiss: "modal"}, class: 'close'
+    %h3= params[:action] == "new" ? "New Category" : "Edit Category"
+  .modal-body
+    .control-group
+      %label.control-label{:for => 'status'} Name*
+      .controls
+        = f.text_field :name
+  .modal-footer
+    = f.submit 'Save', :class => 'btn btn-primary'
+    = link_to 'back', feather_cms_categories_path, class: 'btn', data: {dismiss: "modal"}

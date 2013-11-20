@@ -1,5 +1,5 @@
 .page_header
-  %h3 Pages
+  %h3 Sections
 .tabbable
   %ul.nav.nav-tabs
     - @categories.each do |category|
@@ -8,7 +8,7 @@
     - @categories.each do |category|
       .tab-pane{id: "category_#{category.id}"}
         .add_page
-          = link_to 'Add Page', new_feather_cms_page_path(category_id: category.id), class: 'btn btn-primary'
+          = link_to 'Add Section', new_feather_cms_section_path(category_id: category.id), class: 'btn btn-primary'
         .well.page_tree
           %table.table
             %thead
@@ -17,11 +17,11 @@
                 %th Name
                 %th Actions
             %tbody
-              - category.pages.each_with_index do |page,i|
+              - category.sections.each_with_index do |section,i|
                 %tr
                   %td= (i + 1)
-                  %td= link_to page.name.humanize, edit_feather_cms_page_path(page)
+                  %td= link_to section.name.humanize, edit_feather_cms_section_path(section)
                   %td
-                    = link_to 'Edit', edit_feather_cms_page_path(page)
+                    = link_to 'Edit', edit_feather_cms_section_path(section)
                     |
-                    = link_to 'Destroy', feather_cms_page_path(page), :method => :delete, :confirm => 'Are you sure?'
+                    = link_to 'Destroy', feather_cms_section_path(section), :method => :delete, :confirm => 'Are you sure?'

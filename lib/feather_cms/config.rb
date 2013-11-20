@@ -5,7 +5,7 @@ module FeatherCms
       def init(&block)
         @@config ||= {}
 
-        yield self if block_given? 
+        yield self if block_given?
 
         @@config[:layouts] = Dir.entries(Rails.root.to_s + '/app/views/layouts').reject do |i|
           i.start_with?('.', '_') || File.directory?(i)
@@ -16,7 +16,7 @@ module FeatherCms
         @@config[:layouts]
       end
 
-      [:authentication, :sign_out_url, :template_types].each do |attr|
+      [:authentication, :sign_out_url, :template_types, :namespace].each do |attr|
         class_eval <<-METHOD, __FILE__, __LINE__ + 1
           def #{attr}=(value)
             @@config[:#{attr}] = value

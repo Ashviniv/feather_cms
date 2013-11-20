@@ -1,0 +1,21 @@
+.page_header
+  %h3 Categories
+  .add_page
+    = link_to 'Add Category', new_feather_cms_category_path, class: 'btn btn-primary', remote: true
+.well.page_tree
+  %table.table
+    %thead
+      %tr
+        %th #
+        %th Name
+        %th Actions
+    %tbody
+      - @categories.each_with_index do |category,i|
+        %tr
+          %td= (i + 1)
+          %td= link_to category.name.humanize, edit_feather_cms_category_path(category), remote: true
+          %td
+            = link_to 'Edit', edit_feather_cms_category_path(category), remote: true
+            |
+            = link_to 'Destroy', feather_cms_category_path(category), :method => :delete, :confirm => 'Are you sure?'
+#frmcategory.modal.fade.hide

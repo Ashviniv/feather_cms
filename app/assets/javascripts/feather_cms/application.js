@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require feather_cms/jquery-ui
 //= require ckeditor/init
+//= require bootstrap
+
+// for Multi select
+//= require feather_cms/jquery.uix.multiselect
 
 $(document).ready(function(){
     (function() {
@@ -28,5 +33,8 @@ $(document).ready(function(){
     }
 
     ck_load();
+    $('#section_ids_').multiselect();
+    $('.tabbable .nav li:first').addClass('active');
+    $('.tab-pane:first').addClass('active');
 })
 

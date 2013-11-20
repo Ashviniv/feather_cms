@@ -1,6 +1,6 @@
-.well.row
-  .span11
-    = form_for(@page, :html => {:id => 'page_form'}) do |f|
+.well.span10
+  = form_for(@page, :html => {:id => 'page_form'}) do |f|
+    .span4
       .control-group
         %label.control-label{:for => 'status'} Name*
         .controls
@@ -14,10 +14,10 @@
         .controls
           = f.select :layout, FeatherCms::Config.layouts
       .control-group
-        %label.control-label{:for => 'textarea'} Content*
+        %label.control-label{:for => 'textarea'} Category
         .controls
-          = f.text_area :content, class: 'feather-editor'
-          -#
-            = f.hidden_field :content, :id => 'page_content'
-            #epiceditor
+          = f.select :category_id, @categories.collect{|category| [category.name, category.id] }, selected: @category.id
         = f.submit 'Save', :class => 'btn btn-primary btn-large'
+    .span5
+      %h4 Add Sections
+      = select_tag 'section_ids[]', options_for_select(@category.sections.collect{|section| [section.name, section.id]}, @page.section_ids), multiple: true

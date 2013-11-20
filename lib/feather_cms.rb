@@ -4,6 +4,8 @@ require "feather_cms/config"
 require 'ckeditor'
 require 'carrierwave'
 require 'mini_magick'
+require 'bootstrap-sass'
+require 'friendly_id'
 # Use this hook to configure ckeditor
 Ckeditor.setup do |config|
   # ==> ORM configuration
