@@ -1,4 +1,4 @@
-.well.span10
+.well.span10.first_span
   = form_for(@page, :html => {:id => 'page_form'}) do |f|
     .span4
       .control-group
@@ -6,18 +6,33 @@
         .controls
           = f.text_field :name
       .control-group
-        - unless @page.new_record?
-          %label.control-label{:for => 'status'} Status
-          .controls
-            = f.select :status, FeatherCms::Page::STATUS
         %label.control-label{:for => 'layout'} Layout
         .controls
           = f.select :layout, FeatherCms::Config.layouts
-      .control-group
-        %label.control-label{:for => 'textarea'} Category
-        .controls
-          = f.select :category_id, @categories.collect{|category| [category.name, category.id] }, selected: @category.id
-        = f.submit 'Save', :class => 'btn btn-primary btn-large'
+        = f.hidden_field :category_id, value: @category.id
+        = f.submit 'Save', :class => 'btn btn-primary'
     .span5
       %h4 Add Sections
-      = select_tag 'section_ids[]', options_for_select(@category.sections.collect{|section| [section.name, section.id]}, @page.section_ids), multiple: true
+      = hidden_field_tag 'ordered_section_ids[]'
+      = select_tag 'section_ids[]', options_for_select(@category.sections.collect{|section| [section.name, section.id]}), multiple: true
+:javascript
+  $('#section_ids_').multiselect();
+  var selected_section_names = #{@page.sections.collect(&:name)}
+    $.each(selected_section_names, function(index,name){
+      $('.ui-state-default').each(function(e){
+        if ($(this).text() == name)
+        {
+          $(this).children('a').click();
+        }
+      })
+    });
+  $('#page_form').submit(function(){
+    var ordered_section_ids = []
+    $('.selected ul li').each(function(e){
+      var section_id = $(this).text()
+      if(section_id.length > 0){
+        ordered_section_ids.push($('#section_ids_').find('option:selected:contains('+section_id+')').val());
+      }
+    })
+    $('#ordered_section_ids_').val(ordered_section_ids);
+  })

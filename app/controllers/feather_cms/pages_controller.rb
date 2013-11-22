@@ -29,7 +29,7 @@ module FeatherCms
 
       @page.status = 'draft'
       @page.template_type = 'html'
-      @page.update_attributes(section_ids: params[:section_ids].collect(&:to_i)) if params[:section_ids]
+      update_sections
       if @page.save
         redirect_to feather_cms_pages_path
       else
@@ -45,8 +45,7 @@ module FeatherCms
       @page.name = @page.name.parameterize
       @page.status = status
       @page.template_type = 'html'
-
-      @page.update_attributes(section_ids: params[:section_ids].collect(&:to_i)) if params[:section_ids]
+      update_sections
       if @page.save
         redirect_to feather_cms_pages_path
       else
@@ -90,6 +89,14 @@ module FeatherCms
 
     def load_category
       @category = Category.find(params[:category_id])
+    end
+
+    def update_sections
+      if params[:ordered_section_ids]
+        section_ids = params[:ordered_section_ids][0].split(',').collect(&:to_i)
+        @page.update_attributes(section_ids: section_ids)
+        @page.update_page_sections_position(section_ids)
+      end
     end
 
   end

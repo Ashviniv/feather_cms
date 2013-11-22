@@ -17,7 +17,7 @@
 //= require bootstrap
 
 // for Multi select
-//= require feather_cms/jquery.uix.multiselect
+//= require feather_cms/ui.multiselect
 
 $(document).ready(function(){
     (function() {
@@ -33,7 +33,6 @@ $(document).ready(function(){
     }
 
     ck_load();
-    $('#section_ids_').multiselect();
     $('.tabbable .nav li:first').addClass('active');
     $('.tab-pane:first').addClass('active');
 })

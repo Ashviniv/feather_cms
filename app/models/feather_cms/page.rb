@@ -6,7 +6,7 @@ module FeatherCms
     STATUS = [:draft, :published]
     extend FriendlyId
 
-    attr_accessible :name, :layout, :template_type, :lft, :rgt, :parent_id, :section_ids, :category_id
+    attr_accessible :name, :layout, :template_type, :section_ids, :category_id
 
 
     validates :name, :category_id, :presence => true
@@ -14,12 +14,21 @@ module FeatherCms
 
     friendly_id :name, use: :slugged
 
-    has_many :sections, through: :page_sections
     has_many :page_sections
+    has_many :sections, through: :page_sections, order: 'feather_cms_page_sections.position ASC'
     belongs_to :category
+
+    #accepts_nested_attributes_for :page_sections
 
     def title
       self.name
     end
+
+    def update_page_sections_position(array)
+      self.page_sections.each do |p_section|
+        p_section.update_attribute('position', array.index(p_section.section_id))
+      end
+    end
+
   end
 end

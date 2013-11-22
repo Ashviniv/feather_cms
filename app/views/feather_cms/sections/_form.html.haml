@@ -5,11 +5,8 @@
       .controls
         = f.text_field :name
     .control-group
-      %label.control-label{:for => 'status'} Category*
-      .controls
-        = f.select :category_id, @categories.collect{|category| [category.name, category.id] }, selected: @category.id
-    .control-group
       %label.control-label{:for => 'textarea'} Content*
       .controls
         = f.text_area :content, class: 'feather-editor'
-      = f.submit 'Save', :class => 'btn btn-primary btn-large'
+    = f.hidden_field :category_id, value: @category.id
+    = f.submit 'Save', :class => 'btn btn-primary'
