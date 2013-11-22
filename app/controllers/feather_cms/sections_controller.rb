@@ -1,7 +1,7 @@
 module FeatherCms
   class SectionsController < ApplicationController
 
-    before_filter :load_section, only: [:show, :edit, :update]
+    before_filter :load_section, only: [:show, :edit, :update, :destroy]
     before_filter :load_all_sections, only: [:index]
     before_filter :new_section, only: [:new, :create]
     before_filter :load_categories
