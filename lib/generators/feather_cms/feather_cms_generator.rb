@@ -17,7 +17,7 @@ class FeatherCmsGenerator < Rails::Generators::Base
     template 'create_page_sections.rb', "db/migrate/#{migration_number.to_i + 3}_create_feather_page_sections.rb"
     template 'create_category.rb', "db/migrate/#{migration_number.to_i + 4}_create_feather_categories.rb"
   end
-
+=begin
   def add_routes
     feather_routes =
 <<-ROUTES
@@ -29,5 +29,5 @@ ROUTES
 
     route feather_routes
   end
-
+=end
 end
