@@ -1,6 +1,6 @@
 module FeatherCms
   class Section < ActiveRecord::Base
-    set_table_name :feather_cms_sections
+    table_name = 'feather_cms_sections'
     attr_accessible :name, :content, :category_id
     validates :name, :content, :category_id, presence: true
     belongs_to :category
