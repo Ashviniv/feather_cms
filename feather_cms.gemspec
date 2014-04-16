@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'carrierwave'
   s.add_dependency 'mini_magick'
   s.add_runtime_dependency 'bootstrap-sass', '~> 2.3.0.1'
-  s.add_dependency "friendly_id", "~> 4.0.10"
+  s.add_dependency "friendly_id", "~> 5.0"
 
   s.add_development_dependency 'sqlite3'
 end

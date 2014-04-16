@@ -9,6 +9,7 @@ gemspec
 gem 'jquery-rails'
 gem 'haml', '>= 3.0.0'
 gem 'sass-rails'
+gem 'friendly_id', '>= 5.0'
 group :development do
   gem 'haml-rails', '>= 0.3.4'
 end

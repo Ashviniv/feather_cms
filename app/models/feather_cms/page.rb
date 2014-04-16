@@ -1,7 +1,7 @@
 module FeatherCms
   class Page < ActiveRecord::Base
 
-    table_name = 'feather_cms_pages'
+    self.table_name = 'feather_cms_pages'
 
     STATUS = [:draft, :published]
     extend FriendlyId
