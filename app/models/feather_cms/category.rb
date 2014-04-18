@@ -6,7 +6,7 @@ module FeatherCms
     has_many :pages
     has_many :sections
     has_many :page_sections, through: :sections
-    has_many :ordered_sections, through: :page_sections, source: 'section', order: 'feather_cms_page_sections.position'
+    has_many :ordered_sections, -> {'feather_cms_page_sections.position'}, through: :page_sections, source: 'section'
 
   end
 end

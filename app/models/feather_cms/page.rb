@@ -15,7 +15,7 @@ module FeatherCms
     friendly_id :name, use: :slugged
 
     has_many :page_sections
-    has_many :sections, through: :page_sections, order: 'feather_cms_page_sections.position ASC'
+    has_many :sections, -> {'feather_cms_page_sections.position ASC'}, through: :page_sections
     belongs_to :category
 
     #accepts_nested_attributes_for :page_sections
