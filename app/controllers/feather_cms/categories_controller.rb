@@ -27,7 +27,7 @@ module FeatherCms
     end
 
     def load_category
-      @category = FeatherCms::Category.find(params[:id])
+      @category = FeatherCms::Category.friendly.find(params[:id])
     end
 
     def load_all_categories

@@ -36,7 +36,7 @@ module FeatherCms
     end
 
     def load_section
-      @section = Section.find(params[:id])
+      @section = Section.friendly.find(params[:id])
     end
 
     def load_all_sections
@@ -52,7 +52,7 @@ module FeatherCms
     end
 
     def load_category
-      @category = Category.find(params[:category_id])
+      @category = Category.friendly.find(params[:category_id])
     end
 
     def fetch_category

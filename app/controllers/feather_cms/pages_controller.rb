@@ -76,7 +76,7 @@ module FeatherCms
     end
 
     def find_page
-      @page = Page.find(params[:id])
+      @page = Page.friendly.find(params[:id])
     end
 
     def all_page
@@ -88,7 +88,7 @@ module FeatherCms
     end
 
     def load_category
-      @category = Category.find(params[:category_id])
+      @category = Category.friendly.find(params[:category_id])
     end
 
     def update_sections
