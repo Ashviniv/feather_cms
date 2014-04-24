@@ -1,6 +1,6 @@
 module FeatherCms
   class Category < ActiveRecord::Base
-    table_name = 'feather_cms_categories'
+    self.table_name = 'feather_cms_categories'
     attr_accessible :name
     validates :name, presence: true
     has_many :pages
