@@ -1,10 +1,18 @@
+GIT
+  remote: git://github.com/SmartMedia/ckeditor
+  revision: 8f15e461792628aa1645950f54bbd007337a6b4a
+  branch: rails-4-1
+  specs:
+    ckeditor (4.0.11)
+      mime-types
+      orm_adapter (~> 0.5.0)
+
 PATH
   remote: .
   specs:
     feather_cms (0.0.5.2)
       bootstrap-sass (~> 2.3.0.1)
       carrierwave
-      ckeditor
       friendly_id (~> 5.0)
       haml (>= 4.0.5)
       jquery-rails
@@ -50,9 +58,6 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    ckeditor (4.0.11)
-      mime-types
-      orm_adapter (~> 0.5.0)
     erubis (2.7.0)
     friendly_id (5.0.3)
       activerecord (>= 4.0.0)
@@ -128,6 +133,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ckeditor!
   feather_cms!
   haml-rails (>= 0.3.4)
   sqlite3

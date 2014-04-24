@@ -88,7 +88,7 @@ module FeatherCms
     end
 
     def load_category
-      @category = Category.friendly.find(params[:category_id])
+      @category = Category.find(params[:category_id])
     end
 
     def update_sections
